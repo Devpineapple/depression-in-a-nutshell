@@ -1,6 +1,8 @@
 # depression-in-a-nutshell ![Build status badge](https://github.com/devpineapple/depression-in-a-nutshell/workflows/MakeCode/badge.svg)
 
 
+## Hi!
+* This is my game. So go commit play it.
 
 ## Use this extension
 
