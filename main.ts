@@ -181,7 +181,6 @@ f 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f
 f 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f 
 f f f f f f f f f f f f f f f f 
 `)
-    pause(100)
     A.setVelocity(50, -36)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.goal, function (sprite, otherSprite) {
@@ -203,6 +202,7 @@ f 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f
 f 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f 
 f f f f f f f f f f f f f f f f 
 `)
+    sprite.say("ur nub ;p")
     pause(100)
     game.over(true)
 })
@@ -307,6 +307,9 @@ f 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f
 f 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f 
 f f f f f f f f f f f f f f f f 
 `)
+game.onUpdateInterval(100, function () {
+    myEnemy.follow(A, 30)
+})
 game.onUpdateInterval(2000, function () {
     myEnemy = sprites.create(img`
 f f f f f f f f f f f f f f f f 
@@ -327,7 +330,4 @@ f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f
 f f f f f f f f f f f f f f f f 
 `, SpriteKind.Enemy)
     info.changeScoreBy(1)
-})
-game.onUpdateInterval(200, function () {
-    myEnemy.follow(A, 30)
 })
