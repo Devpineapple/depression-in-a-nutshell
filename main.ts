@@ -119,6 +119,9 @@ f f 7 7 7 7 7 7 7 7 7 2 7 7 7 7
 . . . . f e e e f . . . . . . . 
 `
 }
+function Restart_the_counter () {
+    info.startCountdown(5)
+}
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     console.log("Left")
     A.setImage(img`
@@ -259,6 +262,7 @@ f f f f f f f f f f f f f f f f
     sprite.say("Got the point ;p", 500)
     b.setPosition(Math.randomRange(0, 160), Math.randomRange(0, 200))
     info.player2.changeScoreBy(1)
+    info.startCountdown(5)
 })
 controller.player2.onButtonEvent(ControllerButton.Left, ControllerButtonEvent.Pressed, function () {
     console.log("P2 Left")
@@ -348,6 +352,29 @@ f 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f
 f f f f f f f f f f f f f f f f 
 `)
 })
+info.onCountdownEnd(function () {
+    myEnemy = sprites.create(img`
+f f f f f f f f f f f f f f f f 
+f 2 2 2 2 f 2 2 2 2 f 2 2 2 2 f 
+f 2 2 2 2 f f 2 2 f 2 2 2 2 2 f 
+f 2 2 2 2 2 f f f 2 2 2 2 2 2 f 
+f 2 2 f 2 2 2 f f 2 2 2 2 f 2 f 
+f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
+f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
+f 2 2 2 f f f f f f f 2 2 2 2 f 
+f 2 2 f 2 2 2 2 2 2 f 2 2 2 2 f 
+f 2 2 f 2 2 2 2 2 2 2 f 2 2 2 f 
+f 2 2 2 2 2 2 2 2 2 2 f 2 2 2 f 
+f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
+f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
+f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
+f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
+f f f f f f f f f f f f f f f f 
+`, SpriteKind.Enemy)
+    console.log("Enemy spawned!")
+    b.setPosition(Math.randomRange(0, 160), Math.randomRange(0, 200))
+    Restart_the_counter()
+})
 controller.player2.onButtonEvent(ControllerButton.Right, ControllerButtonEvent.Pressed, function () {
     console.log("P2 right")
     Ap2.setImage(img`
@@ -414,10 +441,12 @@ f f f f f f f f f f f f f f f f
     sprite.say("Ha, red noobs. they look like losers!", 500)
     b.setPosition(Math.randomRange(0, 160), Math.randomRange(0, 200))
     info.changeScoreBy(1)
+    info.startCountdown(5)
 })
 let Ap2: Sprite = null
 let A: Sprite = null
 let b: Sprite = null
+let myEnemy: Sprite = null
 scene.setBackgroundImage(img`
 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
@@ -540,7 +569,7 @@ scene.setBackgroundImage(img`
 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
 `)
-let myEnemy = sprites.create(img`
+myEnemy = sprites.create(img`
 f f f f f f f f f f f f f f f f 
 f 2 2 2 2 f 2 2 2 2 f 2 2 2 2 f 
 f 2 2 2 2 f f 2 2 f 2 2 2 2 2 f 
@@ -642,28 +671,8 @@ f f f f f f f f f f f f f f f f
 `)
 console.log("Game loaded!")
 info.setScore(0)
+info.startCountdown(5)
 game.onUpdateInterval(100, function () {
     console.log("Follow A ")
     myEnemy.follow(A, 30)
-})
-game.onUpdateInterval(2000, function () {
-    myEnemy = sprites.create(img`
-f f f f f f f f f f f f f f f f 
-f 2 2 2 2 f 2 2 2 2 f 2 2 2 2 f 
-f 2 2 2 2 f f 2 2 f 2 2 2 2 2 f 
-f 2 2 2 2 2 f f f 2 2 2 2 2 2 f 
-f 2 2 f 2 2 2 f f 2 2 2 2 f 2 f 
-f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
-f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
-f 2 2 2 f f f f f f f 2 2 2 2 f 
-f 2 2 f 2 2 2 2 2 2 f 2 2 2 2 f 
-f 2 2 f 2 2 2 2 2 2 2 f 2 2 2 f 
-f 2 2 2 2 2 2 2 2 2 2 f 2 2 2 f 
-f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
-f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
-f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
-f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
-f f f f f f f f f f f f f f f f 
-`, SpriteKind.Enemy)
-    console.log("Enemy spawned!")
 })
