@@ -162,6 +162,29 @@ f f f f f f f f f f f f f f f f
     pause(200)
     game.over(false)
 })
+info.onCountdownEnd(function () {
+    myEnemy = sprites.create(img`
+f f f f f f f f f f f f f f f f 
+f 2 2 2 2 f 2 2 2 2 f 2 2 2 2 f 
+f 2 2 2 2 f f 2 2 f 2 2 2 2 2 f 
+f 2 2 2 2 2 f f f 2 2 2 2 2 2 f 
+f 2 2 f 2 2 2 f f 2 2 2 2 f 2 f 
+f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
+f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
+f 2 2 2 f f f f f f f 2 2 2 2 f 
+f 2 2 f 2 2 2 2 2 2 f 2 2 2 2 f 
+f 2 2 f 2 2 2 2 2 2 2 f 2 2 2 f 
+f 2 2 2 2 2 2 2 2 2 2 f 2 2 2 f 
+f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
+f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
+f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
+f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
+f f f f f f f f f f f f f f f f 
+`, SpriteKind.Enemy)
+    b.setPosition(Math.randomRange(0, 57), Math.randomRange(0, 255))
+    pause(100)
+    info.startCountdown(5)
+})
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     A.setImage(img`
 f f f f f f f f f f f f f f f f 
@@ -184,6 +207,7 @@ f f f f f f f f f f f f f f f f
     A.setVelocity(50, -36)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.goal, function (sprite, otherSprite) {
+    info.startCountdown(5)
     sprite.setImage(img`
 f f f f f f f f f f f f f f f f 
 f 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f 
@@ -202,12 +226,15 @@ f 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f
 f 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f 
 f f f f f f f f f f f f f f f f 
 `)
-    sprite.say("ur nub ;p")
-    pause(100)
-    game.over(true)
+    sprite.say("ur nub ;p", 500)
+    b.setPosition(Math.randomRange(0, 57), Math.randomRange(0, 255))
+    info.changeScoreBy(1)
 })
 let A: Sprite = null
-let myEnemy = sprites.create(img`
+let b: Sprite = null
+let myEnemy: Sprite = null
+scene.setBackgroundColor(9)
+myEnemy = sprites.create(img`
 f f f f f f f f f f f f f f f f 
 f 2 2 2 2 f 2 2 2 2 f 2 2 2 2 f 
 f 2 2 2 2 f f 2 2 f 2 2 2 2 2 f 
@@ -225,7 +252,7 @@ f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f
 f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
 f f f f f f f f f f f f f f f f 
 `, SpriteKind.Enemy)
-let b = sprites.create(img`
+b = sprites.create(img`
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
@@ -307,27 +334,7 @@ f 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f
 f 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f 
 f f f f f f f f f f f f f f f f 
 `)
+info.startCountdown(5)
 game.onUpdateInterval(100, function () {
     myEnemy.follow(A, 30)
-})
-game.onUpdateInterval(2000, function () {
-    myEnemy = sprites.create(img`
-f f f f f f f f f f f f f f f f 
-f 2 2 2 2 f 2 2 2 2 f 2 2 2 2 f 
-f 2 2 2 2 f f 2 2 f 2 2 2 2 2 f 
-f 2 2 2 2 2 f f f 2 2 2 2 2 2 f 
-f 2 2 f 2 2 2 f f 2 2 2 2 f 2 f 
-f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
-f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
-f 2 2 2 f f f f f f f 2 2 2 2 f 
-f 2 2 f 2 2 2 2 2 2 f 2 2 2 2 f 
-f 2 2 f 2 2 2 2 2 2 2 f 2 2 2 f 
-f 2 2 2 2 2 2 2 2 2 2 f 2 2 2 f 
-f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
-f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
-f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
-f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
-f f f f f f f f f f f f f f f f 
-`, SpriteKind.Enemy)
-    info.changeScoreBy(1)
 })
