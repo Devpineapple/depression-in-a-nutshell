@@ -430,4 +430,38 @@ f 7 7 7 7 7 f f f f f 7 7 7 7 f
 f 7 7 7 7 7 7 7 7 7 7 7 7 7 7 f 
 f 7 7 7 7 7 7 7 7 7 7 7 7 7 7 f 
 f f f f f f f f f f f f f f f f 
-`</field></shadow></value><next><block type="spritesetvel" id=";7Qf0LIfI/WOI8=pzEJy"><value name="sprite"><block type="variables_get" id="PFX0;t*.K+Jwqb6KF6]O"><field name="VAR" id="iOZ~IqcJEPdTAo,`QJfL">A(p2)</field></block></value><value name="vx"><shadow type="spriteSpeedPicker" id="WU%l/NSd/[,EmJKvKYjY"><field name="speed">50</field></shadow></value><value name="vy"><shadow type="spriteSpeedPicker" id="5?YzIdk96-*HVmR)Y[jB"><field name="speed">30</field></shadow></value></block></next></block></statement></block></xml>
+`</field></shadow></value><next><block type="spritesetvel" id=";7Qf0LIfI/WOI8=pzEJy"><value name="sprite"><block type="variables_get" id="PFX0;t*.K+Jwqb6KF6]O"><field name="VAR" id="iOZ~IqcJEPdTAo,`QJfL">A(p2)</field></block></value><value name="vx"><shadow type="spriteSpeedPicker" id="WU%l/NSd/[,EmJKvKYjY"><field name="speed">50</field></shadow></value><value name="vy"><shadow type="spriteSpeedPicker" id="5?YzIdk96-*HVmR)Y[jB"><field name="speed">30</field></shadow></value></block></next></block></statement></block><block type="ctrlonbuttonevent" id="BGd!pnKsm2QGS;[C7{kT" x="510" y="1770"><field name="controller">controller.player2</field><field name="button">ControllerButton.Left</field><field name="event">ControllerButtonEvent.Pressed</field><statement name="HANDLER"><block type="spritesetimage" id="[]kra6!yve?Wbw7qTz#a"><value name="sprite"><block type="variables_get" id="TRrEQVi{hn47xNEsro(l"><field name="VAR" id="iOZ~IqcJEPdTAo,`QJfL">A(p2)</field></block></value><value name="img"><shadow type="screen_image_picker" id="VsxxHun^^9pr5eW(txH0"><field name="img">img`
+f f f f f f f f f f f f f f f f 
+f 7 7 7 7 7 7 7 7 7 7 7 7 7 7 f 
+f 7 7 7 7 7 7 7 7 7 7 7 7 7 7 f 
+f 7 7 7 7 7 7 7 7 7 7 7 7 7 7 f 
+f 7 7 7 7 7 7 7 7 7 7 7 7 7 7 f 
+f 7 7 7 7 7 7 7 7 7 7 7 7 7 7 f 
+f 7 f 7 7 7 7 f 7 7 7 7 7 7 7 f 
+f 7 7 7 7 7 7 7 7 7 7 7 7 7 7 f 
+f 7 7 f f f 7 7 7 7 7 7 7 7 7 f 
+f 7 7 7 7 7 7 7 7 7 7 7 7 7 7 f 
+f 7 7 7 7 7 7 7 7 7 7 7 7 7 7 f 
+f 7 7 7 7 7 7 7 7 7 7 7 7 7 7 f 
+f 7 7 7 7 7 7 7 7 7 7 7 7 7 7 f 
+f 7 7 7 7 7 7 7 7 7 7 7 7 7 7 f 
+f 7 7 7 7 7 7 7 7 7 7 7 7 7 7 f 
+f f f f f f f f f f f f f f f f 
+`</field></shadow></value></block></statement></block><block type="ctrlonbuttonevent" id="[d{IOKsOc~[,9(NZ%$(o" x="930" y="1770"><field name="controller">controller.player2</field><field name="button">ControllerButton.Right</field><field name="event">ControllerButtonEvent.Pressed</field><statement name="HANDLER"><block type="spritesetimage" id="A/6vO*/7H=?)5Z}~~xu?"><value name="sprite"><block type="variables_get" id="{Nz`O{49vRgSB?1`Cx|O"><field name="VAR" id="iOZ~IqcJEPdTAo,`QJfL">A(p2)</field></block></value><value name="img"><shadow type="screen_image_picker" id="HQgn~0qoCcPzRJu|F^~P"><field name="img">img`
+f f f f f f f f f f f f f f f f 
+f 7 7 7 7 7 7 7 7 7 7 7 7 7 7 f 
+f 7 7 7 7 7 7 7 7 7 7 7 7 7 7 f 
+f 7 7 7 7 7 7 7 7 7 7 7 7 7 7 f 
+f 7 7 7 7 7 7 7 7 7 7 7 7 7 7 f 
+f 7 7 7 7 7 7 7 7 7 7 7 7 7 7 f 
+f 7 7 7 7 7 7 7 7 7 7 7 7 7 7 f 
+f 7 7 7 7 7 7 7 f 7 7 7 7 f 7 f 
+f 7 7 7 7 7 7 7 7 7 7 7 7 7 7 f 
+f 7 7 7 7 7 7 7 7 f f f f 7 7 f 
+f 7 7 7 7 7 7 7 7 7 7 7 7 7 7 f 
+f 7 7 7 7 7 7 7 7 7 7 7 7 7 7 f 
+f 7 7 7 7 7 7 7 7 7 7 7 7 7 7 f 
+f 7 7 7 7 7 7 7 7 7 7 7 7 7 7 f 
+f 7 7 7 7 7 7 7 7 7 7 7 7 7 7 f 
+f f f f f f f f f f f f f f f f 
+`</field></shadow></value></block></statement></block></xml>
