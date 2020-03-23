@@ -120,6 +120,7 @@ f f 7 7 7 7 7 7 7 7 7 2 7 7 7 7
 `
 }
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
+    console.log("Left")
     A.setImage(img`
 f f f f f f f f f f f f f f f f 
 f 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f 
@@ -140,6 +141,7 @@ f f f f f f f f f f f f f f f f
 `)
 })
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
+    console.log("down")
     A.setImage(img`
 f f f f f f f f f f f f f f f f 
 f 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f 
@@ -202,8 +204,14 @@ f f f f f f f f f f f f f f f f
 `, SpriteKind.Player_2)
     controller.player2.moveSprite(Ap2, 100, 0)
     Ap2.setFlag(SpriteFlag.StayInScreen, true)
+    console.log("Player 2 connected successfully!")
+})
+controller.combos.attachCombo("A+B", function () {
+    console.log("Reset Combo Loaded!")
+    game.reset()
 })
 sprites.onOverlap(SpriteKind.Player_2, SpriteKind.Enemy, function (sprite, otherSprite) {
+    console.log("P2 Died")
     otherSprite.say("GOT EM >:)")
     otherSprite.setImage(img`
 f f f f f f f f f f f f f f f f 
@@ -223,10 +231,11 @@ f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f
 f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
 f f f f f f f f f f f f f f f f 
 `)
-    pause(200)
+    pause(100)
     game.over(false)
 })
 sprites.onOverlap(SpriteKind.Player_2, SpriteKind.goal, function (sprite, otherSprite) {
+    console.log("P2 Won!")
     sprite.setImage(img`
 f f f f f f f f f f f f f f f f 
 f 7 7 7 7 7 7 7 7 7 7 7 7 7 7 f 
@@ -250,6 +259,7 @@ f f f f f f f f f f f f f f f f
     game.over(true)
 })
 controller.player2.onButtonEvent(ControllerButton.Left, ControllerButtonEvent.Pressed, function () {
+    console.log("P2 Left")
     Ap2.setImage(img`
 f f f f f f f f f f f f f f f f 
 f 7 7 7 7 7 7 7 7 7 7 7 7 7 7 f 
@@ -270,6 +280,7 @@ f f f f f f f f f f f f f f f f
 `)
 })
 controller.player2.onButtonEvent(ControllerButton.Up, ControllerButtonEvent.Pressed, function () {
+    console.log("P2 Up")
     Ap2.setImage(img`
 f f f f f f f f f f f f f f f f 
 f 7 7 7 7 7 7 7 7 7 7 7 7 7 7 f 
@@ -291,6 +302,7 @@ f f f f f f f f f f f f f f f f
     Ap2.setVelocity(50, -36)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
+    console.log("P1 Died")
     otherSprite.say("GOT EM >:)")
     otherSprite.setImage(img`
 f f f f f f f f f f f f f f f f 
@@ -310,10 +322,11 @@ f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f
 f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
 f f f f f f f f f f f f f f f f 
 `)
-    pause(200)
+    pause(100)
     game.over(false)
 })
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
+    console.log("Right")
     A.setImage(img`
 f f f f f f f f f f f f f f f f 
 f 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f 
@@ -334,6 +347,7 @@ f f f f f f f f f f f f f f f f
 `)
 })
 controller.player2.onButtonEvent(ControllerButton.Right, ControllerButtonEvent.Pressed, function () {
+    console.log("P2 right")
     Ap2.setImage(img`
 f f f f f f f f f f f f f f f f 
 f 7 7 7 7 7 7 7 7 7 7 7 7 7 7 f 
@@ -354,6 +368,7 @@ f f f f f f f f f f f f f f f f
 `)
 })
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
+    console.log("up")
     A.setImage(img`
 f f f f f f f f f f f f f f f f 
 f 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f 
@@ -375,6 +390,7 @@ f f f f f f f f f f f f f f f f
     A.setVelocity(50, -36)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.goal, function (sprite, otherSprite) {
+    console.log("P1 Won!")
     sprite.setImage(img`
 f f f f f f f f f f f f f f f f 
 f 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f 
@@ -576,8 +592,8 @@ f 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f
 f f f f f f f f f f f f f f f f 
 `, SpriteKind.Player)
 controller.moveSprite(A, 100, 0)
-b.setPosition(Math.randomRange(0, 57), Math.randomRange(0, 255))
-myEnemy.setPosition(Math.randomRange(0, 160), Math.randomRange(0, 255))
+b.setPosition(Math.randomRange(0, 160), Math.randomRange(0, 200))
+myEnemy.setPosition(Math.randomRange(0, 160), Math.randomRange(0, 200))
 A.setPosition(57, 233)
 tiles.setTilemap(tiles.createTilemap(
             hex`1000100000000000000000000000000000000000000000000000000000000000000003000003000000030000000000000000000000000000000000000000000000000000000000000000000000000300000000000000000000000000000000000000000000000000000000000000000000000000030000000300000000000000000000000000000000000000000000000000030000000000000000000000000000000000000000000000000000000300000000000000000000000000000000000000000000000300000000000000000000000000000000000000000000000000000000000405000400050004000500000400050402020202020202020202020202020202`,
@@ -621,7 +637,9 @@ f 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f
 f 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f 
 f f f f f f f f f f f f f f f f 
 `)
+console.log("Game loaded!")
 game.onUpdateInterval(100, function () {
+    console.log("Follow A ")
     myEnemy.follow(A, 30)
 })
 game.onUpdateInterval(2000, function () {
@@ -643,5 +661,6 @@ f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f
 f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
 f f f f f f f f f f f f f f f f 
 `, SpriteKind.Enemy)
+    console.log("Enemy spawned!")
     info.changeScoreBy(1)
 })

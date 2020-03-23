@@ -1,7 +1,8 @@
 {
     "name": "depression in a nutshell",
     "dependencies": {
-        "device": "*"
+        "device": "*",
+        "pxt-button-combos": "github:jwunderl/pxt-button-combos#v0.0.23"
     },
     "description": "",
     "files": [
