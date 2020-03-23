@@ -202,9 +202,11 @@ f 7 7 7 7 7 7 7 7 7 7 7 7 7 7 f
 f 7 7 7 7 7 7 7 7 7 7 7 7 7 7 f 
 f f f f f f f f f f f f f f f f 
 `, SpriteKind.Player_2)
+    Ap2.setPosition(A.x, A.y)
     controller.player2.moveSprite(Ap2, 100, 0)
     Ap2.setFlag(SpriteFlag.StayInScreen, true)
     console.log("Player 2 connected successfully!")
+    info.player2.setScore(0)
 })
 controller.combos.attachCombo("A+B", function () {
     console.log("Reset Combo Loaded!")
@@ -212,7 +214,7 @@ controller.combos.attachCombo("A+B", function () {
 })
 sprites.onOverlap(SpriteKind.Player_2, SpriteKind.Enemy, function (sprite, otherSprite) {
     console.log("P2 Died")
-    otherSprite.say("GOT EM >:)")
+    otherSprite.say("P2 is kil")
     otherSprite.setImage(img`
 f f f f f f f f f f f f f f f f 
 f 2 2 2 f f 2 2 2 f f 2 2 2 2 f 
@@ -235,7 +237,7 @@ f f f f f f f f f f f f f f f f
     game.over(false)
 })
 sprites.onOverlap(SpriteKind.Player_2, SpriteKind.goal, function (sprite, otherSprite) {
-    console.log("P2 Won!")
+    console.log("P2 got a point!")
     sprite.setImage(img`
 f f f f f f f f f f f f f f f f 
 f 7 7 7 7 7 7 7 7 7 7 7 7 7 7 f 
@@ -254,9 +256,9 @@ f 7 7 7 7 7 7 7 7 7 7 7 7 7 7 f
 f 7 7 7 7 7 7 7 7 7 7 7 7 7 7 f 
 f f f f f f f f f f f f f f f f 
 `)
-    sprite.say("ur nub ;p")
-    pause(100)
-    game.over(true)
+    sprite.say("Got the point ;p", 500)
+    b.setPosition(Math.randomRange(0, 160), Math.randomRange(0, 200))
+    info.player2.changeScoreBy(1)
 })
 controller.player2.onButtonEvent(ControllerButton.Left, ControllerButtonEvent.Pressed, function () {
     console.log("P2 Left")
@@ -303,7 +305,7 @@ f f f f f f f f f f f f f f f f
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
     console.log("P1 Died")
-    otherSprite.say("GOT EM >:)")
+    otherSprite.say("P1 is kil")
     otherSprite.setImage(img`
 f f f f f f f f f f f f f f f f 
 f 2 2 2 f f 2 2 2 f f 2 2 2 2 f 
@@ -390,7 +392,7 @@ f f f f f f f f f f f f f f f f
     A.setVelocity(50, -36)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.goal, function (sprite, otherSprite) {
-    console.log("P1 Won!")
+    console.log("P1 got a point!")
     sprite.setImage(img`
 f f f f f f f f f f f f f f f f 
 f 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f 
@@ -409,12 +411,13 @@ f 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f
 f 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f 
 f f f f f f f f f f f f f f f f 
 `)
-    sprite.say("ur nub ;p")
-    pause(100)
-    game.over(true)
+    sprite.say("Ha, red noobs. they look like losers!", 500)
+    b.setPosition(Math.randomRange(0, 160), Math.randomRange(0, 200))
+    info.changeScoreBy(1)
 })
 let Ap2: Sprite = null
 let A: Sprite = null
+let b: Sprite = null
 scene.setBackgroundImage(img`
 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
@@ -555,7 +558,7 @@ f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f
 f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
 f f f f f f f f f f f f f f f f 
 `, SpriteKind.Enemy)
-let b = sprites.create(img`
+b = sprites.create(img`
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
@@ -638,6 +641,7 @@ f 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f
 f f f f f f f f f f f f f f f f 
 `)
 console.log("Game loaded!")
+info.setScore(0)
 game.onUpdateInterval(100, function () {
     console.log("Follow A ")
     myEnemy.follow(A, 30)
@@ -662,5 +666,4 @@ f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f
 f f f f f f f f f f f f f f f f 
 `, SpriteKind.Enemy)
     console.log("Enemy spawned!")
-    info.changeScoreBy(1)
 })
