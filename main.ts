@@ -119,9 +119,6 @@ f f 7 7 7 7 7 7 7 7 7 2 7 7 7 7
 . . . . f e e e f . . . . . . . 
 `
 }
-function Restart_the_counter () {
-    info.startCountdown(5)
-}
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     console.log("Left")
     A.setImage(img`
@@ -215,6 +212,9 @@ controller.combos.attachCombo("A+B", function () {
     console.log("Reset Combo Loaded!")
     game.reset()
 })
+function Restart_the_counter () {
+    info.startCountdown(5)
+}
 sprites.onOverlap(SpriteKind.Player_2, SpriteKind.Enemy, function (sprite, otherSprite) {
     console.log("P2 Died")
     otherSprite.say("P2 is kil")
@@ -237,6 +237,7 @@ f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f
 f f f f f f f f f f f f f f f f 
 `)
     pause(100)
+    music.stopAllSounds()
     game.over(false)
 })
 sprites.onOverlap(SpriteKind.Player_2, SpriteKind.goal, function (sprite, otherSprite) {
@@ -328,6 +329,7 @@ f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f
 f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
 f f f f f f f f f f f f f f f f 
 `)
+    music.stopAllSounds()
     pause(100)
     game.over(false)
 })
@@ -438,7 +440,8 @@ f 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f
 f 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f 
 f f f f f f f f f f f f f f f f 
 `)
-    sprite.say("Ha, red noobs. they look like losers!", 500)
+    sprite.say("Ha, red noobs. they look like losers!", 2000)
+    music.baDing.play()
     b.setPosition(Math.randomRange(0, 160), Math.randomRange(0, 200))
     info.changeScoreBy(1)
     info.startCountdown(5)
@@ -675,4 +678,7 @@ info.startCountdown(5)
 game.onUpdateInterval(100, function () {
     console.log("Follow A ")
     myEnemy.follow(A, 30)
+})
+forever(function () {
+    music.playMelody("G B A G C5 B A B ", 130)
 })
