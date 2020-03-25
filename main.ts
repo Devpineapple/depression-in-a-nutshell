@@ -419,7 +419,7 @@ f f f f f f f f f f f f f f f f
 `, SpriteKind.Projectile)
     console.log("powerup colected!")
     projectile.setPosition(sprite.x, sprite.y)
-    projectile.follow(myEnemy, 100)
+    projectile.follow(myEnemy)
     pause(2000)
     projectile.destroy(effects.disintegrate, 100)
     console.log("Projectile committed kil")
@@ -504,7 +504,11 @@ let A: Sprite = null
 let b: Sprite = null
 let myEnemy: Sprite = null
 let power_up: Sprite = null
+let x = 0
+game.splash("Depression in a nutshell", "PineappleDEV 2020 |   Press A to start!")
 game.splash("GET THE GOAL", "objetive: Dont die ")
+x = 1
+game.splash("How to play the game", "arrows = move | get to the green \"G\" and don't get caught by the red squares!! ")
 scene.setBackgroundImage(img`
 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
@@ -627,6 +631,7 @@ scene.setBackgroundImage(img`
 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
 `)
+x = 2
 power_up = sprites.create(img`
 f f f f f f f f f f f f f f f f 
 f 2 2 2 2 2 2 2 7 7 7 7 7 7 7 f 
@@ -747,7 +752,6 @@ f 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f
 f f f f f f f f f f f f f f f f 
 `)
 console.log("Game loaded!")
-let x = 1
 info.setScore(0)
 game.onUpdateInterval(100, function () {
     console.log("Follow A ")
@@ -774,6 +778,11 @@ f f f f f f f f f f f f f f f f
 `, SpriteKind.Enemy)
     console.log("Enemy spawned!")
     b.setPosition(Math.randomRange(0, 160), Math.randomRange(0, 200))
+})
+forever(function () {
+    while (x == 1) {
+        music.playMelody("E B C5 A B G A F ", 160)
+    }
 })
 forever(function () {
     music.playMelody("G B A G C5 B A B ", 170)
