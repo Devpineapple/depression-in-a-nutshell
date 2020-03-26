@@ -161,7 +161,6 @@ f 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f
 f 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f 
 f f f f f f f f f f f f f f f f 
 `)
-    A.setVelocity(50, 30)
 })
 controller.player2.onButtonEvent(ControllerButton.Down, ControllerButtonEvent.Pressed, function () {
     Ap2.setImage(img`
@@ -471,7 +470,6 @@ f 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f
 f 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f 
 f f f f f f f f f f f f f f f f 
 `)
-    A.setVelocity(50, -36)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.goal, function (sprite, otherSprite) {
     console.log("P1 got a point!")
@@ -704,7 +702,7 @@ f 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f
 f 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f 
 f f f f f f f f f f f f f f f f 
 `, SpriteKind.Player)
-controller.moveSprite(A, 100, 0)
+controller.moveSprite(A, 100, 100)
 b.setPosition(Math.randomRange(0, 160), Math.randomRange(0, 200))
 myEnemy.setPosition(Math.randomRange(0, 160), Math.randomRange(0, 200))
 A.setPosition(57, 233)
