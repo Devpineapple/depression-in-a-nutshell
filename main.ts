@@ -780,10 +780,7 @@ f f f f f f f f f f f f f f f f
     b.setPosition(Math.randomRange(0, 160), Math.randomRange(0, 200))
 })
 forever(function () {
-    while (x == 1) {
+    if (x == 2) {
         music.playMelody("E B C5 A B G A F ", 160)
     }
-})
-forever(function () {
-    music.playMelody("G B A G C5 B A B ", 170)
 })
