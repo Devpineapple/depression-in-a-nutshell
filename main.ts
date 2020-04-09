@@ -209,38 +209,14 @@ f f f f f f f f f f f f f f f f
     controller.player2.moveSprite(Ap2, 100, 0)
     Ap2.setFlag(SpriteFlag.StayInScreen, true)
     console.log("Player 2 connected successfully!")
-    info.player2.setScore(0)
+    info.player2.setLife(3)
 })
 controller.combos.attachCombo("A+B", function () {
     console.log("Reset Combo Loaded!")
     game.reset()
 })
-sprites.onOverlap(SpriteKind.Player_2, SpriteKind.Enemy, function (sprite, otherSprite) {
-    console.log("P2 Died")
-    otherSprite.say("P2 is kil")
-    otherSprite.setImage(img`
-f f f f f f f f f f f f f f f f 
-f 2 2 2 f f 2 2 2 f f 2 2 2 2 f 
-f 2 2 2 2 f f 2 f f 2 2 2 2 2 f 
-f 2 2 2 2 2 f f f 2 2 2 2 2 2 f 
-f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
-f 2 2 f 2 2 2 2 2 2 2 f 2 2 2 f 
-f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
-f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
-f 2 2 2 2 f 2 2 2 f 2 2 2 2 2 f 
-f 2 2 2 2 f f f f f 2 2 2 2 2 f 
-f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
-f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
-f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
-f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
-f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
-f f f f f f f f f f f f f f f f 
-`)
-    pause(100)
-    music.stopAllSounds()
-    game.over(false)
-})
 sprites.onOverlap(SpriteKind.Player_2, SpriteKind.goal, function (sprite, otherSprite) {
+    let b: Sprite = null
     console.log("P2 got a point!")
     sprite.setImage(img`
 f f f f f f f f f f f f f f f f 
@@ -264,30 +240,10 @@ f f f f f f f f f f f f f f f f
     b.setPosition(Math.randomRange(0, 160), Math.randomRange(0, 200))
     info.player2.changeScoreBy(1)
 })
-sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
-    sprite.destroy(effects.fire, 100)
-    otherSprite.destroy(effects.fire, 100)
-    console.log("Enemy committed kil")
-    myEnemy = sprites.create(img`
-f f f f f f f f f f f f f f f f 
-f 2 2 2 2 f 2 2 2 2 f 2 2 2 2 f 
-f 2 2 2 2 f f 2 2 f 2 2 2 2 2 f 
-f 2 2 2 2 2 f f f 2 2 2 2 2 2 f 
-f 2 2 f 2 2 2 f f 2 2 2 2 f 2 f 
-f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
-f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
-f 2 2 2 f f f f f f f 2 2 2 2 f 
-f 2 2 f 2 2 2 2 2 2 f 2 2 2 2 f 
-f 2 2 f 2 2 2 2 2 2 2 f 2 2 2 f 
-f 2 2 2 2 2 2 2 2 2 2 f 2 2 2 f 
-f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
-f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
-f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
-f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
-f f f f f f f f f f f f f f f f 
-`, SpriteKind.Enemy)
-    console.log("Enemy spawned!")
-    b.setPosition(Math.randomRange(0, 160), Math.randomRange(0, 200))
+info.player2.onLifeZero(function () {
+    game.splash("Player 1 WINS!")
+    pause(2000)
+    game.reset()
 })
 controller.player2.onButtonEvent(ControllerButton.Left, ControllerButtonEvent.Pressed, function () {
     console.log("P2 Left")
@@ -332,31 +288,6 @@ f f f f f f f f f f f f f f f f
 `)
     Ap2.setVelocity(50, -36)
 })
-sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
-    console.log("P1 Died")
-    otherSprite.say("P1 is kil")
-    otherSprite.setImage(img`
-f f f f f f f f f f f f f f f f 
-f 2 2 2 f f 2 2 2 f f 2 2 2 2 f 
-f 2 2 2 2 f f 2 f f 2 2 2 2 2 f 
-f 2 2 2 2 2 f f f 2 2 2 2 2 2 f 
-f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
-f 2 2 f 2 2 2 2 2 2 2 f 2 2 2 f 
-f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
-f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
-f 2 2 2 2 f 2 2 2 f 2 2 2 2 2 f 
-f 2 2 2 2 f f f f f 2 2 2 2 2 f 
-f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
-f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
-f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
-f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
-f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
-f f f f f f f f f f f f f f f f 
-`)
-    music.stopAllSounds()
-    pause(100)
-    game.over(false)
-})
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     console.log("Right")
     A.setImage(img`
@@ -377,6 +308,11 @@ f 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f
 f 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f 
 f f f f f f f f f f f f f f f f 
 `)
+})
+sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Player_2, function (sprite, otherSprite) {
+    sprite.destroy(effects.disintegrate, 100)
+    info.player2.changeLifeBy(-1)
+    console.log("Hit")
 })
 controller.player2.onButtonEvent(ControllerButton.Right, ControllerButtonEvent.Pressed, function () {
     console.log("P2 right")
@@ -421,7 +357,7 @@ f f f f f f f f f f f f f f f f
 `, SpriteKind.Projectile)
     console.log("powerup colected!")
     projectile.setPosition(sprite.x, sprite.y)
-    projectile.follow(myEnemy)
+    projectile.follow(Ap2)
     pause(2000)
     projectile.destroy(effects.disintegrate, 100)
     console.log("Projectile committed kil")
@@ -448,7 +384,7 @@ f f f f f f f f f f f f f f f f
 `, SpriteKind.Projectile)
     console.log("P2 powerup colected!")
     projectile.setPosition(sprite.x, sprite.y)
-    projectile.follow(myEnemy, 100)
+    projectile.follow(A, 100)
     pause(2000)
     projectile.destroy(effects.disintegrate, 100)
     console.log("Projectile committed kil")
@@ -474,36 +410,19 @@ f 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f
 f f f f f f f f f f f f f f f f 
 `)
 })
-sprites.onOverlap(SpriteKind.Player, SpriteKind.goal, function (sprite, otherSprite) {
-    console.log("P1 got a point!")
-    sprite.setImage(img`
-f f f f f f f f f f f f f f f f 
-f 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f 
-f 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f 
-f 5 f 5 5 5 5 5 5 5 5 5 5 f 5 f 
-f 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f 
-f 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f 
-f 5 5 5 5 f 5 5 5 5 f 5 5 5 5 f 
-f 5 5 5 5 f 5 5 5 5 f 5 5 5 5 f 
-f 5 5 5 5 f f f f f f 5 5 5 5 f 
-f 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f 
-f 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f 
-f 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f 
-f 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f 
-f 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f 
-f 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f 
-f f f f f f f f f f f f f f f f 
-`)
-    sprite.say("Ha, red noobs. they look like losers!", 2000)
-    music.baDing.play()
-    b.setPosition(Math.randomRange(0, 160), Math.randomRange(0, 200))
-    info.changeScoreBy(1)
+info.onLifeZero(function () {
+    game.splash("Player 2 WINS!")
+    pause(2000)
+    game.reset()
+})
+sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Player, function (sprite, otherSprite) {
+    sprite.destroy(effects.disintegrate, 100)
+    info.changeLifeBy(-1)
+    console.log("Hit")
 })
 let projectile: Sprite = null
 let Ap2: Sprite = null
 let A: Sprite = null
-let b: Sprite = null
-let myEnemy: Sprite = null
 let power_up: Sprite = null
 let x = 0
 game.splash("Depression in a nutshell", "PineappleDEV 2020 |   Press A to start!")
@@ -650,42 +569,6 @@ f 5 5 5 5 5 5 5 8 8 8 8 8 8 8 f
 f 5 5 5 5 5 5 5 8 8 8 8 8 8 8 f 
 f f f f f f f f f f f f f f f f 
 `, SpriteKind.Power_up)
-myEnemy = sprites.create(img`
-f f f f f f f f f f f f f f f f 
-f 2 2 2 2 f 2 2 2 2 f 2 2 2 2 f 
-f 2 2 2 2 f f 2 2 f 2 2 2 2 2 f 
-f 2 2 2 2 2 f f f 2 2 2 2 2 2 f 
-f 2 2 f 2 2 2 f f 2 2 2 2 f 2 f 
-f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
-f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
-f 2 2 2 f f f f f f f 2 2 2 2 f 
-f 2 2 f 2 2 2 2 2 2 f 2 2 2 2 f 
-f 2 2 f 2 2 2 2 2 2 2 f 2 2 2 f 
-f 2 2 2 2 2 2 2 2 2 2 f 2 2 2 f 
-f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
-f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
-f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
-f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
-f f f f f f f f f f f f f f f f 
-`, SpriteKind.Enemy)
-b = sprites.create(img`
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . f f f f f f f f f . . . . 
-. . . f 7 7 7 7 7 7 7 f . . . . 
-. . . f 7 f f f f f 7 f . . . . 
-. . . f 7 f 7 7 7 7 7 f . . . . 
-. . . f 7 f 7 f f f 7 f . . . . 
-. . . f 7 f 7 7 7 f 7 f . . . . 
-. . . f 7 f f f f f 7 f . . . . 
-. . . f 7 7 7 7 7 7 7 f . . . . 
-. . . f f f f f f f f f . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-`, SpriteKind.goal)
 A = sprites.create(img`
 f f f f f f f f f f f f f f f f 
 f 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f 
@@ -705,8 +588,6 @@ f 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f
 f f f f f f f f f f f f f f f f 
 `, SpriteKind.Player)
 controller.moveSprite(A, 100, 100)
-b.setPosition(Math.randomRange(0, 160), Math.randomRange(0, 200))
-myEnemy.setPosition(Math.randomRange(0, 160), Math.randomRange(0, 200))
 A.setPosition(57, 233)
 power_up.setPosition(Math.randomRange(0, 160), Math.randomRange(0, 200))
 tiles.setTilemap(tiles.createTilemap(
@@ -751,34 +632,8 @@ f 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f
 f 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f 
 f f f f f f f f f f f f f f f f 
 `)
+info.setLife(3)
 console.log("Game loaded!")
-info.setScore(0)
-game.onUpdateInterval(100, function () {
-    console.log("Follow A ")
-    myEnemy.follow(A, 30)
-})
-game.onUpdateInterval(5000, function () {
-    myEnemy = sprites.create(img`
-f f f f f f f f f f f f f f f f 
-f 2 2 2 2 f 2 2 2 2 f 2 2 2 2 f 
-f 2 2 2 2 f f 2 2 f 2 2 2 2 2 f 
-f 2 2 2 2 2 f f f 2 2 2 2 2 2 f 
-f 2 2 f 2 2 2 f f 2 2 2 2 f 2 f 
-f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
-f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
-f 2 2 2 f f f f f f f 2 2 2 2 f 
-f 2 2 f 2 2 2 2 2 2 f 2 2 2 2 f 
-f 2 2 f 2 2 2 2 2 2 2 f 2 2 2 f 
-f 2 2 2 2 2 2 2 2 2 2 f 2 2 2 f 
-f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
-f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
-f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
-f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
-f f f f f f f f f f f f f f f f 
-`, SpriteKind.Enemy)
-    console.log("Enemy spawned!")
-    b.setPosition(Math.randomRange(0, 160), Math.randomRange(0, 200))
-})
 forever(function () {
     if (x == 2) {
         music.playMelody("E B C5 A B G A F ", 160)
