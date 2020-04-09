@@ -3,6 +3,7 @@ namespace SpriteKind {
     export const goal = SpriteKind.create()
     export const Player_2 = SpriteKind.create()
     export const Power_up = SpriteKind.create()
+    export const projectile_P2 = SpriteKind.create()
 }
 namespace myTiles {
     //% blockIdentity=images._tile
@@ -142,7 +143,7 @@ f f f f f f f f f f f f f f f f
 `)
 })
 controller.combos.attachCombo("a+u", function () {
-    game.splash("How to play the game", "arrows = move | get to the green \"G\" and don't get caught by the red squares!! ")
+    game.splash("How to play the game", "arrows = move | Kill your oponent and win the match!")
 })
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     console.log("down")
@@ -185,6 +186,11 @@ f 7 7 7 7 7 7 7 7 7 7 7 7 7 7 f
 f f f f f f f f f f f f f f f f 
 `)
     Ap2.setVelocity(50, 30)
+})
+sprites.onOverlap(SpriteKind.projectile_P2, SpriteKind.Player, function (sprite, otherSprite) {
+    sprite.destroy(effects.disintegrate, 100)
+    info.changeLifeBy(-1)
+    console.log("Hit")
 })
 controller.player2.onEvent(ControllerEvent.Connected, function () {
     Ap2 = sprites.create(img`
@@ -364,7 +370,7 @@ f f f f f f f f f f f f f f f f
 })
 sprites.onOverlap(SpriteKind.Player_2, SpriteKind.Power_up, function (sprite, otherSprite) {
     power_up.setPosition(Math.randomRange(0, 160), Math.randomRange(0, 200))
-    projectile = sprites.create(img`
+    Projectile_P2 = sprites.create(img`
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
 . . 2 . . . . . 2 . . . . . . 2 
@@ -381,12 +387,12 @@ f f f f f f f f f f f f f f f f
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
-`, SpriteKind.Projectile)
+`, SpriteKind.projectile_P2)
     console.log("P2 powerup colected!")
-    projectile.setPosition(sprite.x, sprite.y)
-    projectile.follow(A, 100)
+    Projectile_P2.setPosition(sprite.x, sprite.y)
+    Projectile_P2.follow(A, 100)
     pause(2000)
-    projectile.destroy(effects.disintegrate, 100)
+    Projectile_P2.destroy(effects.disintegrate, 100)
     console.log("Projectile committed kil")
 })
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -415,11 +421,7 @@ info.onLifeZero(function () {
     pause(2000)
     game.reset()
 })
-sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Player, function (sprite, otherSprite) {
-    sprite.destroy(effects.disintegrate, 100)
-    info.changeLifeBy(-1)
-    console.log("Hit")
-})
+let Projectile_P2: Sprite = null
 let projectile: Sprite = null
 let Ap2: Sprite = null
 let A: Sprite = null
