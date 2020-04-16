@@ -34,4 +34,4 @@ On some devices it will auto install if you have pulged into your computer, some
 If its not on your game library of your device you can install it manually by dragging and dropping into a folder. 
 
 
-###More information in the FAQ page of the games [https://sites.google.com/prod/view/pineappledev/support]
+### More information in the FAQ page of the games [https://sites.google.com/prod/view/pineappledev/support]
