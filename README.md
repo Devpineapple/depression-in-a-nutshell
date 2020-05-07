@@ -24,7 +24,7 @@ There is an orange button that says download.
 
 Here is the list of supported devices: [https://sites.google.com/prod/view/pineappledev/depression-in-a-nutshell#h.i9d3c33t7qie]
 
-On This devices you can only download the official game. :(
+On This devices you can only install the official game. :(
 
 ## Part 3: How to install the actual game 
 
@@ -34,4 +34,6 @@ On some devices it will auto install if you have pulged into your computer, some
 If its not on your game library of your device you can install it manually by dragging and dropping into a folder. 
 
 
-### More information in the FAQ page of the games [https://sites.google.com/prod/view/pineappledev/support]
+### How to play the game in the Make:code built-in emulator
+On this website you will see how to play the game
+https://sites.google.com/prod/view/pineappledev/support/detailed-instructions
