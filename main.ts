@@ -516,6 +516,78 @@ scene.setBackgroundImage(img`
     9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
     9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
     `)
+power_up = sprites.create(img`
+    f f f f f f f f f f f f f f f f 
+    f 2 2 2 2 2 2 2 7 7 7 7 7 7 7 f 
+    f 2 2 2 2 2 2 2 7 7 7 7 7 7 7 f 
+    f 2 2 2 2 2 2 2 7 7 7 7 7 7 7 f 
+    f 2 2 2 2 2 2 2 7 7 7 7 7 7 7 f 
+    f 2 2 2 2 2 2 2 7 7 7 7 7 7 7 f 
+    f 2 2 2 2 2 2 2 7 7 7 7 7 7 7 f 
+    f 2 2 2 2 2 2 2 7 7 7 7 7 7 7 f 
+    f 5 5 5 5 5 5 5 8 8 8 8 8 8 8 f 
+    f 5 5 5 5 5 5 5 8 8 8 8 8 8 8 f 
+    f 5 5 5 5 5 5 5 8 8 8 8 8 8 8 f 
+    f 5 5 5 5 5 5 5 8 8 8 8 8 8 8 f 
+    f 5 5 5 5 5 5 5 8 8 8 8 8 8 8 f 
+    f 5 5 5 5 5 5 5 8 8 8 8 8 8 8 f 
+    f 5 5 5 5 5 5 5 8 8 8 8 8 8 8 f 
+    f f f f f f f f f f f f f f f f 
+    `, SpriteKind.Power_up)
+myEnemy = sprites.create(img`
+    f f f f f f f f f f f f f f f f 
+    f 2 2 2 2 f 2 2 2 2 f 2 2 2 2 f 
+    f 2 2 2 2 f f 2 2 f 2 2 2 2 2 f 
+    f 2 2 2 2 2 f f f 2 2 2 2 2 2 f 
+    f 2 2 f 2 2 2 f f 2 2 2 2 f 2 f 
+    f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
+    f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
+    f 2 2 2 f f f f f f f 2 2 2 2 f 
+    f 2 2 f 2 2 2 2 2 2 f 2 2 2 2 f 
+    f 2 2 f 2 2 2 2 2 2 2 f 2 2 2 f 
+    f 2 2 2 2 2 2 2 2 2 2 f 2 2 2 f 
+    f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
+    f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
+    f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
+    f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
+    f f f f f f f f f f f f f f f f 
+    `, SpriteKind.Enemy)
+b = sprites.create(img`
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . f f f f f f f f f . . . . 
+    . . . f 7 7 7 7 7 7 7 f . . . . 
+    . . . f 7 f f f f f 7 f . . . . 
+    . . . f 7 f 7 7 7 7 7 f . . . . 
+    . . . f 7 f 7 f f f 7 f . . . . 
+    . . . f 7 f 7 7 7 f 7 f . . . . 
+    . . . f 7 f f f f f 7 f . . . . 
+    . . . f 7 7 7 7 7 7 7 f . . . . 
+    . . . f f f f f f f f f . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    `, SpriteKind.goal)
+A = sprites.create(img`
+    f f f f f f f f f f f f f f f f 
+    f 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f 
+    f 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f 
+    f 5 5 5 5 5 5 5 5 5 5 5 f 5 5 f 
+    f 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f 
+    f 5 5 f 5 5 5 5 5 5 5 5 5 5 5 f 
+    f 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f 
+    f 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f 
+    f 5 5 f 5 5 5 5 5 5 5 f 5 5 5 f 
+    f 5 5 f 5 5 5 5 5 5 5 f 5 5 5 f 
+    f 5 5 5 f 5 5 5 5 5 f 5 5 5 5 f 
+    f 5 5 5 f f 5 5 5 f f 5 5 5 5 f 
+    f 5 5 5 5 f f f f f 5 5 5 5 5 f 
+    f 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f 
+    f 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f 
+    f f f f f f f f f f f f f f f f 
+    `, SpriteKind.Player)
 let smooth_camera = sprites.create(img`
     f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f 
     f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f 
@@ -638,78 +710,6 @@ let smooth_camera = sprites.create(img`
     f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f 
     f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f 
     `, SpriteKind.Camera)
-power_up = sprites.create(img`
-    f f f f f f f f f f f f f f f f 
-    f 2 2 2 2 2 2 2 7 7 7 7 7 7 7 f 
-    f 2 2 2 2 2 2 2 7 7 7 7 7 7 7 f 
-    f 2 2 2 2 2 2 2 7 7 7 7 7 7 7 f 
-    f 2 2 2 2 2 2 2 7 7 7 7 7 7 7 f 
-    f 2 2 2 2 2 2 2 7 7 7 7 7 7 7 f 
-    f 2 2 2 2 2 2 2 7 7 7 7 7 7 7 f 
-    f 2 2 2 2 2 2 2 7 7 7 7 7 7 7 f 
-    f 5 5 5 5 5 5 5 8 8 8 8 8 8 8 f 
-    f 5 5 5 5 5 5 5 8 8 8 8 8 8 8 f 
-    f 5 5 5 5 5 5 5 8 8 8 8 8 8 8 f 
-    f 5 5 5 5 5 5 5 8 8 8 8 8 8 8 f 
-    f 5 5 5 5 5 5 5 8 8 8 8 8 8 8 f 
-    f 5 5 5 5 5 5 5 8 8 8 8 8 8 8 f 
-    f 5 5 5 5 5 5 5 8 8 8 8 8 8 8 f 
-    f f f f f f f f f f f f f f f f 
-    `, SpriteKind.Power_up)
-myEnemy = sprites.create(img`
-    f f f f f f f f f f f f f f f f 
-    f 2 2 2 2 f 2 2 2 2 f 2 2 2 2 f 
-    f 2 2 2 2 f f 2 2 f 2 2 2 2 2 f 
-    f 2 2 2 2 2 f f f 2 2 2 2 2 2 f 
-    f 2 2 f 2 2 2 f f 2 2 2 2 f 2 f 
-    f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
-    f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
-    f 2 2 2 f f f f f f f 2 2 2 2 f 
-    f 2 2 f 2 2 2 2 2 2 f 2 2 2 2 f 
-    f 2 2 f 2 2 2 2 2 2 2 f 2 2 2 f 
-    f 2 2 2 2 2 2 2 2 2 2 f 2 2 2 f 
-    f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
-    f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
-    f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
-    f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
-    f f f f f f f f f f f f f f f f 
-    `, SpriteKind.Enemy)
-b = sprites.create(img`
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . f f f f f f f f f . . . . 
-    . . . f 7 7 7 7 7 7 7 f . . . . 
-    . . . f 7 f f f f f 7 f . . . . 
-    . . . f 7 f 7 7 7 7 7 f . . . . 
-    . . . f 7 f 7 f f f 7 f . . . . 
-    . . . f 7 f 7 7 7 f 7 f . . . . 
-    . . . f 7 f f f f f 7 f . . . . 
-    . . . f 7 7 7 7 7 7 7 f . . . . 
-    . . . f f f f f f f f f . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    `, SpriteKind.goal)
-A = sprites.create(img`
-    f f f f f f f f f f f f f f f f 
-    f 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f 
-    f 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f 
-    f 5 5 5 5 5 5 5 5 5 5 5 f 5 5 f 
-    f 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f 
-    f 5 5 f 5 5 5 5 5 5 5 5 5 5 5 f 
-    f 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f 
-    f 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f 
-    f 5 5 f 5 5 5 5 5 5 5 f 5 5 5 f 
-    f 5 5 f 5 5 5 5 5 5 5 f 5 5 5 f 
-    f 5 5 5 f 5 5 5 5 5 f 5 5 5 5 f 
-    f 5 5 5 f f 5 5 5 f f 5 5 5 5 f 
-    f 5 5 5 5 f f f f f 5 5 5 5 5 f 
-    f 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f 
-    f 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f 
-    f f f f f f f f f f f f f f f f 
-    `, SpriteKind.Player)
 controller.moveSprite(A, 100, 100)
 b.setPosition(randint(0, 160), randint(0, 200))
 myEnemy.setPosition(randint(0, 160), randint(0, 200))
@@ -779,7 +779,7 @@ game.onUpdateInterval(5000, function () {
 })
 game.onUpdateInterval(parseFloat("1"), function () {
     if (x == 2) {
-        smooth_camera.follow(A, 100)
+        smooth_camera.follow(A, 80)
     }
 })
 forever(function () {
